@@ -1,3 +1,5 @@
+# Left paddle
+
 import turtle
 
 # Paddle A

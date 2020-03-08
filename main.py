@@ -1,3 +1,5 @@
+# Main game file
+
 import turtle
 from paddle_a import (paddle_a, paddle_a_up, paddle_a_down)
 from paddle_b import (paddle_b, paddle_b_up, paddle_b_down)
@@ -14,7 +16,7 @@ wn.bgcolor("black")
 wn.setup(width = 800, height = 600)
 # Stops the window from updating. Speeds up game
 wn.tracer(0)
-# Starting score
+# Initial score
 scoreA = 0
 scoreB = 0
 
@@ -37,13 +39,13 @@ paddle_a_middle = -350
 paddle_b_surface = 340 
 paddle_b_middle = 350
 
-# Show score
+# Show initial score score
 pen.write(f"Player A: {scoreA}  Player B: {scoreB}", align="center", font=("Courier, 24"))
 
-# Main game loop
-while True:
-    # Update screen
-    wn.update()
+# Main game function
+def move_ball():
+    
+    global scoreA, scoreB
 
     # Paddle a current y position
     paddle_a_top = paddle_a.ycor() + 60 # ycor() gives center coordinate of the paddle
@@ -71,7 +73,8 @@ while True:
         ball.goto(0, 0) # Restart
         ball.dx *= -1
         scoreA += 1
-        pen.clear() # Clear screen first before writing again
+        # Clear screen and show updated score
+        pen.clear()
         pen.write(f"Player A: {scoreA}  Player B: {scoreB}", align="center", font=("Courier, 24"))
     
     # Player B wins
@@ -91,3 +94,10 @@ while True:
     if (ball.xcor() > paddle_b_surface and ball.xcor() < paddle_b_middle) and (ball.ycor() < paddle_b_top and ball.ycor() > paddle_b_bottom):
         ball.setx(paddle_b_surface)
         ball.dx *= -1
+
+if __name__ == "__main__":
+    while True:
+        # Update screen
+        wn.update()
+        move_ball()
+    
