@@ -7,7 +7,7 @@ This is a classic Pong game built with the Python Turtle module.
 
 ## Getting started
 ### Clone repository
-`git clone https://github.com/jseow5177/Pong.git`
+`git clone https://github.com/jseow5177/Pong.git` </br>
 `cd Pong`
 
 ## Technology stack
